@@ -1,0 +1,23 @@
+doctrine:
+    dbal:
+        # configure these for your database server
+        driver: 'pdo_pgsql'
+        charset: utf8
+        dbname: test
+        host: 127.0.0.1
+        port: 5432
+        user: test
+        password: test
+        unix_socket: /var/run/postgresql
+        url: '%env(resolve:DATABASE_URL)%'
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
